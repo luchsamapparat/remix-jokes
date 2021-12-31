@@ -1,7 +1,7 @@
 import type { ActionFunction, LinksFunction } from "remix";
 import { json, Link, useActionData, useSearchParams } from "remix";
 import { db } from "~/utils/db.server";
-import { createUserSession, login, register } from "~/utils/session.server";
+import { createUserSession, login } from "~/utils/session.server";
 import stylesUrl from "../styles/login.css";
 
 export const links: LinksFunction = () => {
@@ -84,7 +84,7 @@ export const action: ActionFunction = async ({
                     formError: `User with username ${username} already exists`
                 });
             }
-            const user = await register({ username, password });
+            const user = await registers({ username, password });
             if (!user) {
                 return badRequest({
                     fields,
